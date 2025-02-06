@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program-7</title>
+</head>
+<body>
+    <h1> Simple Calculator </h1>
+    <input type="number" id="num1" placeholder="Enter the first number">
+    <input type="number" id="num2" placeholder="Enter the second number">
+
+
+    <div>
+        <button onclick="calculate('sum')">Sum</button>
+        <button onclick="calculate('difference')">Difference</button>
+        <button onclick="calculate('product')">Product</button>
+        <button onclick="calculate('quotient')">Quotient</button>
+    </div>
+    
+    <div id="result"></div>
+
+    <script>
+        function calculate(operation)
+        {
+          var num1=parseFloat(document.getElementById('num1').value);
+          var num2=parseFloat(document.getElementById('num2').value);
+          var result;
+
+          if(isNaN(num1) || isNaN(num2))
+          {
+            document.getElementById('result').innerHTML="Please enter a valid number";
+            return;
+          }
+          
+          switch(operation)
+          {
+            case 'sum':
+                result=num1+num2;
+                break;
+            case 'difference':
+                result=num1-num2;
+                break;
+            case 'product':
+                result=num1*num2;
+                break;
+            case 'quotient':
+                if(num2==0)
+                {
+                  document.getElementById('result').innerHTML="Cannot divide";
+                  return;
+                }
+                result=num1/num2;
+                break;
+          }
+          document.getElementById('result').innerHTML="Result: "+result;
+        }
+    </script>
+</body>
+</html>
